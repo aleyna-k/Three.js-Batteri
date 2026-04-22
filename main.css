@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a0f;
+    overflow: hidden;
+    font-family: 'Share Tech Mono', monospace;
+    color: #fff;
+}
+
+#canvas-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+canvas {
+    display: block;
+}
+
+#ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+#title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.6rem;
+    letter-spacing: 0.3em;
+    color: #ff4422;
+    text-shadow: 0 0 30px #ff441288, 0 0 60px #ff441244;
+}
+
+#hit-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    color: #ff4422;
+    text-shadow: 0 0 40px #ff4422;
+    opacity: 0;
+    transition: none;
+    pointer-events: none;
+}
+
+#hint {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size:1rem;
+    color: #ffffffae;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+}
+
+#controls {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: all;
+}
+
+.ctrl-btn {
+    background: #ffffff08;
+    border: 1px solid #ffffff1a;
+    color: #aaa;
+    font-family: 'Share Tech Mono', monospace;
+    font-size:1rem;
+    letter-spacing: 0.12em;
+    padding: 8px 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.18s;
+}
+
+.ctrl-btn:hover {
+    background: #ff442218;
+    border-color: #ff442266;
+    color: #ff4422;
+}
+
+.ctrl-btn.active {
+    background: #ff442230;
+    border-color: #ff4422;
+    color: #ff4422;
+}
+
+#rec-panel {
+    position: absolute;
+    bottom: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    pointer-events: all;
+}
+
+#rec-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 2px solid #ff4422;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+#rec-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ff4422;
+    transition: all 0.2s;
+}
+
+#rec-btn.recording {
+    border-color: #ff0000;
+    animation: pulse-ring 1s infinite;
+}
+
+#rec-btn.recording::after {
+    background: #ff0000;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+}
+
+@keyframes pulse-ring {
+    0% {
+        box-shadow: 0 0 0 0 #ff000066;
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px #ff000000;
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 #ff000000;
+    }
+}
+
+#rec-timer {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    color: #ff4422;
+    min-width: 58px;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#rec-timer.visible {
+    opacity: 1;
+}
+
+#rec-list {
+    position: absolute;
+    bottom: 112px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    pointer-events: all;
+    max-height: 180px;
+    overflow-y: auto;
+    min-width: 300px;
+}
+
+.rec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff08;
+    border: 1px solid #ffffff15;
+    padding: 6px 10px;
+    font-size:1rem;
+    color: #9c9c9c;
+    letter-spacing: 0.08em;
+}
+
+.rec-item span {
+    flex: 1;
+}
+
+.rec-item button {
+    background: none;
+    border: 1px solid #cccccc;
+    color: #d3d3d3;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    padding: 3px 7px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.15s;
+}
+
+.rec-item button:hover {
+    border-color: #ff4422;
+    color: #ff4422;
+}
+
+#vu-bar {
+    position: absolute;
+    top: 82px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 3px;
+    pointer-events: none;
+}
+
+.vu-seg {
+    width: 6px;
+    height: 16px;
+    background: #ffffff08;
+    border: 1px solid #ffffff06;
+    transition: background 0.05s;
+}

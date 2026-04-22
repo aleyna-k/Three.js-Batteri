@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Bateri</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div id="canvas-container"></div>
+    <div id="ui">
+        <div id="title">Ses Analizi</div>
+        <div id="hit-label"></div>
+        <div id="vu-bar"></div>
+        <div id="rec-list"></div>
+        <div id="rec-panel">
+            <button id="rec-btn" title="Kayıt Başlat / Durdur"></button>
+            <div id="rec-timer">0:00</div>
+        </div>
+        <div id="hint">[ Q=Hi-Hat &nbsp; W=Tom1 &nbsp; E=Tom2 &nbsp; A=FloorTom &nbsp; S=Snare &nbsp; D=Ride &nbsp;
+            Z=Kick &nbsp; X=Crash ]</div>
+        <div id="controls">
+            <button class="ctrl-btn active" id="btn-rotate" onclick="toggleRotate()">OTO DÖNDÜR</button>
+            <button class="ctrl-btn" id="btn-light" onclick="toggleLight()">IŞIK MOD</button>
+            <button class="ctrl-btn" id="btn-reverb" onclick="toggleReverb()">REVERB</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
